@@ -1,0 +1,88 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Variables and initialization
+        double totalUsage = 0;
+        double totalPayment = 0;
+        double pricePerUnit = 500;
+
+        Console.WriteLine("======================================");
+        Console.WriteLine(" COMMUNITY WATER MANAGEMENT SYSTEM");
+        Console.WriteLine("======================================");
+
+        // Get input from the user
+        Console.Write("Enter the name of the community: ");
+        string communityName = Console.ReadLine();
+
+        Console.Write("Enter the number of households: ");
+        int households = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("\nWater price = UGX " + pricePerUnit + " per unit");
+        Console.WriteLine();
+
+        // Loop through households
+        for (int i = 1; i <= households; i++)
+        {
+            Console.Write("Enter water usage for household "
+                          + i + " (units): ");
+
+            double usage = Convert.ToDouble(Console.ReadLine());
+
+            // Operators
+            double payment = usage * pricePerUnit;
+
+            totalUsage = totalUsage + usage;
+            totalPayment = totalPayment + payment;
+
+            // Decision statement
+            if (usage > 20)
+            {
+                Console.WriteLine(
+                    "Warning: Household " + i +
+                    " has high water consumption.");
+            }
+            else
+            {
+                Console.WriteLine(
+                    "Household " + i +
+                    " has normal water consumption.");
+            }
+
+            Console.WriteLine("Amount to pay: UGX " + payment);
+            Console.WriteLine();
+        }
+
+        // Calculate average
+        double averageUsage = totalUsage / households;
+
+        // Display final report
+        Console.WriteLine("======================================");
+        Console.WriteLine(" COMMUNITY WATER REPORT");
+        Console.WriteLine("======================================");
+
+        Console.WriteLine("Community: " + communityName);
+        Console.WriteLine("Households: " + households);
+        Console.WriteLine("Total water usage: " + totalUsage + " units");
+        Console.WriteLine("Total amount collected: UGX " + totalPayment);
+        Console.WriteLine("Average water usage: "
+                          + averageUsage + " units");
+
+        // Final decision
+        if (averageUsage > 20)
+        {
+            Console.WriteLine(
+                "Community status: HIGH WATER CONSUMPTION");
+        }
+        else
+        {
+            Console.WriteLine(
+                "Community status: NORMAL WATER CONSUMPTION");
+        }
+
+        Console.WriteLine("======================================");
+        Console.WriteLine("Thank you for using the system.");
+    }
+}
